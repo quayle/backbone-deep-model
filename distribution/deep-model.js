@@ -186,33 +186,20 @@
      * @param {String}  Object path e.g. 'user.name'
      * @return {Mixed}
      */
-    function getNested(obj, path, return_exists) {
+    function getNested(obj, path) {
         var separator = DeepModel.keyPathSeparator;
-
         var fields = path ? path.split(separator) : [];
         var result = obj;
-        return_exists || (return_exists === false);
         for (var i = 0, n = fields.length; i < n; i++) {
-            if (return_exists && !_.has(result, fields[i])) {
-                return false;
-            }
             result = result[fields[i]];
+
+            if (typeof result === 'undefined') {
+                return result;
+            }
 
             if (result == null && i < n - 1) {
                 result = {};
             }
-
-            if (typeof result === 'undefined') {
-                if (return_exists)
-                {
-                    return true;
-                }
-                return result;
-            }
-        }
-        if (return_exists)
-        {
-            return true;
         }
         return result;
     }
@@ -263,10 +250,11 @@
         constructor: function(attributes, options) {
             var defaults;
             var attrs = attributes || {};
+            options || (options = {});
             this.cid = _.uniqueId('c');
             this.attributes = {};
-            if (options && options.collection) this.collection = options.collection;
-            if (options && options.parse) attrs = this.parse(attrs, options) || {};
+            _.extend(this, _.pick(options, ['url', 'urlRoot', 'collection']));
+            if (options.parse) attrs = this.parse(attrs, options) || {};
             if (defaults = _.result(this, 'defaults')) {
                 //<custom code>
                 // Replaced the call to _.defaults with _.deepExtend.
