@@ -1,14 +1,30 @@
 {
-  "name": "backbone-deep-model",
-  "description": "Improved support for models with nested attributes.",
-  "author": {
-    "name": "Charles Davison"
-  },
+  "name": "@mindless.mind/backbone-deep-model",
+  "description": "Improved support for models with nested attributes. This is forked library with merged some old upstream pull requests.",
+  "author": "Charles Davison",
   "version": "0.11.0",
   "dependencies": {
     "backbone": ">=0.9.10"
   },
   "devDependencies": {
     "buildify": "latest"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./scripts/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quayle/backbone-deep-model.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quayle/backbone-deep-model/issues"
+  },
+  "homepage": "https://github.com/quayle/backbone-deep-model#readme"
 }
