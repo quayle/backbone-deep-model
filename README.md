@@ -1,4 +1,4 @@
-NOTE: I no longer have time to maintain this module. Please see the forks list for actively maintained projects, such as https://github.com/kahwee/backbone-deep-model
+NOTE: This is forked library with merged some old upstream pull requests.
 
 backbone-deep-model
 ===================
